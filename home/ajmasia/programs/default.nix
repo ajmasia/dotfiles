@@ -8,4 +8,5 @@
   ./bat
   ./fzf
   ./tmux
+  ./rofi
 ]

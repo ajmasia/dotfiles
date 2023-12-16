@@ -50,6 +50,8 @@ in
     firefox # Web brouser
 
     # UI
+    wl-clip-persist # Keep Wayland clipboard even after programs close
+    cliphist # Wayland clipboard manager
 
     # Dev tools
 
