@@ -1,0 +1,1 @@
+- [Installing NixOS with Hyprland](https://blog.stackademic.com/installing-nixos-with-hyprland-c9b793446921)

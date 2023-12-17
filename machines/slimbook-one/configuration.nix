@@ -91,7 +91,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    bluetuith
   ];
+
+  # Hint Electon apps to use wayland
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
   
   nix = {
     settings = {
@@ -110,7 +116,23 @@
   programs.hyprland = {
     enable = true;
 
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
+
+    xwayland = { # An X server for interfacing X11 apps with the Wayland protocol
+      enable = true;
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+
+    wlr = { 
+      enable = true;
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   # List services that you want to enable:

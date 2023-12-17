@@ -50,10 +50,12 @@ in
     firefox # Web brouser
 
     # UI
+    wl-clipboard # Command-line copy/paste utilities for Wayland
     wl-clip-persist # Keep Wayland clipboard even after programs close
     cliphist # Wayland clipboard manager
 
     # Dev tools
+    lazygit # Simple terminal UI for git commands
 
     # Security and privacy
 
