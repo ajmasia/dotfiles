@@ -9,4 +9,5 @@
   ./fzf
   ./tmux
   ./rofi
+  ./ags
 ]

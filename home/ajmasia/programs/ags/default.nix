@@ -8,6 +8,6 @@
     # configDir = homeConfigDirectory/ags;
 
     # packages to add to gjs's runtime
-    extraPackages = [ pkgs.libsoup_3 ];
+    # extraPackages = [ pkgs.libsoup_3 ];
   };
 }
