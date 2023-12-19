@@ -37,6 +37,8 @@ in
     # Productivity tools
 
     # Multimedia
+    helvum # A GTK patchbay for pipewire
+
 
     # Messaging
 
@@ -53,6 +55,8 @@ in
     wl-clipboard # Command-line copy/paste utilities for Wayland
     wl-clip-persist # Keep Wayland clipboard even after programs close
     cliphist # Wayland clipboard manager
+    swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
+    libnotify # A library that sends desktop notifications to a notification daemon
 
     # Dev tools
     lazygit # Simple terminal UI for git commands

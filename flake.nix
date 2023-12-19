@@ -10,6 +10,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = inputs @ {nixpkgs, ...}: let

@@ -5,6 +5,7 @@ let
   homeDirectory = (import ./constants.nix).homeDirectory;
 in
   with pkgs; {
+
     home = {
       inherit username homeDirectory;
 
@@ -25,7 +26,6 @@ in
 
     programs.home-manager.enable = true;
 
-
     nixpkgs = {
       config = {
         allowUnfreePredicate = pkg:
@@ -40,7 +40,10 @@ in
       overlays = [ ];
     };
 
-    imports = builtins.concatMap import [
+    imports = [ 
+      inputs.ags.homeManagerModules.default 
+    ] ++ builtins.concatMap import [
       ./programs
+      ./services
     ];
   }
