@@ -58,6 +58,13 @@ in
     swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
     libnotify # A library that sends desktop notifications to a notification daemon
 
+    # Code builders, compilers and interpreters
+    gcc # GNU compiler collection tools
+    cmake # Cross-platform, open-source build system generatorpa
+    gnumake # Tool to control the generation of non-source files from sources
+    cargo # Rust builder & module manager
+    nodejs_20 # Node.js interpreter
+
     # Dev tools
     lazygit # Simple terminal UI for git commands
 
@@ -66,4 +73,7 @@ in
     # Editors
 
     # LSP and Lua tools
+    stylua # An opinionated Lua code formatter
+    sumneko-lua-language-server # A full-featured Lua language server
+    luajitPackages.luarocks # A package manager for Lua modules
   ]
