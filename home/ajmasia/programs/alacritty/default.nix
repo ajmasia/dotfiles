@@ -6,7 +6,7 @@
 
     settings = {
       env = {
-        WINIT_X11_SCALE_FACTOR = "1.05";
+        WINIT_X11_SCALE_FACTOR = "0.94";
       };
 
       class = {
@@ -15,7 +15,7 @@
       };
 
       font = {
-        size = 12;
+        size = 13;
 
         normal = {
           family = "Hack Nerd Font";

@@ -14,6 +14,12 @@ let
     ];
   };
 
+  yarnWithNode20 = pkgs.yarn.overrideAttrs (oldAttrs: rec {
+    buildInputs = with pkgs; [
+      nodejs-20_x
+    ];
+  });
+
 in
 with pkgs; [
   # From overlays
@@ -68,6 +74,7 @@ with pkgs; [
   gnumake # Tool to control the generation of non-source files from sources
   cargo # Rust builder & module manager
   nodejs_20 # Node.js interpreter
+  yarnWithNode20 # Node.js package manager
 
   # Dev tools
   lazygit # Simple terminal UI for git commands
