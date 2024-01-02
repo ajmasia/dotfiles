@@ -1,49 +1,51 @@
-{ inputs, pkgs, ... }: 
+{ inputs, pkgs, ... }:
 
 let
   username = (import ./constants.nix).userName;
   homeDirectory = (import ./constants.nix).homeDirectory;
 in
-  with pkgs; {
+with pkgs; {
 
-    home = {
-      inherit username homeDirectory;
+  home = {
+    inherit username homeDirectory;
 
-      keyboard = {
-        layout = "us";
-        variant = "altgr-intl";
-      };
-
-      packages = import ./packages {pkgs = pkgs;};
-
-      #  User assets and personal config
-      file = (import ./file) {};
-
-      stateVersion = "24.05";
+    keyboard = {
+      layout = "us";
+      variant = "altgr-intl";
     };
 
-    fonts.fontconfig.enable = true;
+    packages = import ./packages { pkgs = pkgs; };
 
-    programs.home-manager.enable = true;
+    #  User assets and personal config
+    file = (import ./file) { };
 
-    nixpkgs = {
-      config = {
-        allowUnfreePredicate = pkg:
-          builtins.elem (pkgs.lib.getName pkg) [
-	    "1password"
-	    "1password-cli"
-	  ];
+    stateVersion = "24.05";
+  };
 
-        permittedInsecurePackages = [ ];
-      };
+  fonts.fontconfig.enable = true;
 
-      overlays = [ ];
+  programs.home-manager.enable = true;
+
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (pkgs.lib.getName pkg) [
+          "1password"
+          "1password-cli"
+        ];
+
+      permittedInsecurePackages = [ ];
     };
 
-    imports = [ 
-      inputs.ags.homeManagerModules.default 
-    ] ++ builtins.concatMap import [
-      ./programs
-      ./services
+    overlays = [
+      (import ./overlays/bin.nix)
     ];
-  }
+  };
+
+  imports = [
+    inputs.ags.homeManagerModules.default
+  ] ++ builtins.concatMap import [
+    ./programs
+    ./services
+  ];
+}

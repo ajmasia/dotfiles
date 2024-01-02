@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+# ANSI color codes
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+CLEAR='\033[0m'
+
+CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
+
+show_help() {
+	echo -e "Usage: ${YELLOW}Nvim Manager ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"
+	echo
+	echo "Available commands: (no command or options start config selector)"
+	echo -e "  ${PURPLE}sel, select${CLEAR}     Show a selector to choose the Neovim configuration"
+	echo
+	echo "Available options:"
+	echo -e "  ${PURPLE}-h, --help${CLEAR}      Display this help message"
+	echo -e "  ${PURPLE}-d, --default${CLEAR}   Use default config"
+	echo -e "  ${PURPLE}-n, --native${CLEAR}    Use native config"
+}
+
+get_nvim_instances() {
+	# Check if the config file exists
+	if [ ! -f "$CONFIG_FILE_PATH" ]; then
+		echo -e "${YELLOW}The configuration file does not exist: $CONFIG_FILE_PATH${YELLOW}"
+		exit 1
+	fi
+
+	# Read the config file
+	local items=()
+	while IFS= read -r line || [[ -n "$line" ]]; do
+		items+=("$line")
+	done <"$CONFIG_FILE_PATH"
+
+	# Check if the config file is empty
+	if [ ${#items[@]} -eq 0 ]; then
+		echo -e "${YELLOW}No configurations found in $CONFIG_FILE_PATH${YELLOW}"
+		exit 1
+	fi
+
+	printf "%s\n" "${items[@]}"
+}
+
+select_config() {
+	items=$(get_nvim_instances)
+
+	local config=$(printf "%s\n" "${items[@]}" | fzf --prompt="Please select a Neovim  from ~/.config/: " --height=~50% --layout=reverse --exit-0)
+
+	if [[ -z $config ]]; then
+		echo -e "${YELLOW}Oops! Nothing selected!${YELLOW}"
+		exit 0
+	fi
+
+	# Remove the * character
+	config="${config%\*}"
+
+	NVIM_APPNAME=$config nvim "$@"
+}
+
+use_default_environment() {
+	items=($(get_nvim_instances))
+
+	# Set the default instance
+	local default_config
+
+	for item in "${items[@]}"; do
+		if [[ "$item" == *"*" ]]; then
+			default_config="${item%}"
+			break
+		fi
+	done
+
+	default_config=${default_config:-${items[0]}}
+
+	# Remove the * character
+	default_config="${default_config%\*}"
+
+	NVIM_APPNAME=$default_config nvim "$@"
+
+	exit 0
+}
+
+use_native_environment() {
+	# Default behavior (no script commds)
+	nvim "$@"
+	exit 0
+}
+
+use_config_selector() {
+	echo -e "${GREEN}Config Selector${GREEN}"
+	select_config "$@"
+	exit 0
+}
+
+[[ $# -eq 0 ]] && use_config_selector
+
+while [[ $# -gt 0 ]]; do
+	key="$1"
+
+	case $key in
+	sel | select)
+		echo "sel"
+		shift # Remove argument
+		use_config_selector "$@"
+		;;
+	-h | --help)
+		shift # Remove argument
+		show_help
+		;;
+	-d | --default)
+		shift # Remove argument
+		use_default_environment "$@"
+		echo "Default"
+		;;
+	-n | --native)
+		shift # Remove argument
+		use_native_environment "$@"
+		;;
+	*)
+		use_config_selector "$@"
+		break
+		;;
+	esac
+done
