@@ -41,6 +41,7 @@ with pkgs; [
 
 
   # Messaging
+  telegram-desktop
 
   # Dev tools
 
@@ -49,7 +50,7 @@ with pkgs; [
   _1password # CLI Password manager and secure wallet
 
   # Browsers
-  firefox # Web brouser
+  firefox-wayland # Web brouser
 
   # UI
   wl-clipboard # Command-line copy/paste utilities for Wayland
@@ -57,6 +58,8 @@ with pkgs; [
   cliphist # Wayland clipboard manager
   swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
   libnotify # A library that sends desktop notifications to a notification daemon
+  sassc # A wrapper around libsass
+  waybar # Highly customizable Wayland bar for Sway and Wlroots based compositors
 
   # Code builders, compilers and interpreters
   gcc # GNU compiler collection tools

@@ -24,7 +24,8 @@
 
       colors = {
         primary = {
-          background = "#24283b";
+          # background = "#24283b"; for use with tokyonight theme
+          background = "#282c34";
           foreground = "0xa9b1d6";
         };
 
@@ -63,7 +64,7 @@
 
       window = {
         padding = { x = 8; y = 8; };
-	decorations = "none";
+        decorations = "none";
       };
 
       cursor = {

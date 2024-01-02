@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -65,6 +66,7 @@
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
+  services.blueman.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -100,10 +102,10 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
-  
+
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
 
@@ -120,7 +122,8 @@
 
     package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
 
-    xwayland = { # An X server for interfacing X11 apps with the Wayland protocol
+    xwayland = {
+      # An X server for interfacing X11 apps with the Wayland protocol
       enable = true;
     };
   };
@@ -128,7 +131,7 @@
   xdg.portal = {
     enable = true;
 
-    wlr = { 
+    wlr = {
       enable = true;
     };
 
