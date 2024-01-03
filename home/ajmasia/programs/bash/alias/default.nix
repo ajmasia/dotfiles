@@ -5,6 +5,10 @@ import ./git.nix //
   cat = "bat";
   ls = "eza";
 
+  # Nvim Manager
   nvm = "nvim-manager $@";
-  nvr = "NVIM_APPNAME=nvim-rolling nvim $@";
+  nvs = "nvim-manager sel $@";
+  nvd = "nvim-manager def $@";
+  nvn = "nvim-manager sys $@";
+  ed = "nvim-manager def $@";
 }

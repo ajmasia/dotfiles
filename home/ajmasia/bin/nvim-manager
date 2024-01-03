@@ -9,17 +9,23 @@ CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
+VERSION=0.1.1
+NVIM_REPO=ajmasia/nvim.git
 
 show_help() {
-	echo -e "Usage: ${YELLOW}Nvim Manager ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"
+	echo -e "Usage: ${YELLOW}Neovim Manager CLI ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"
 	echo
 	echo "Available commands: (no command or options start config selector)"
 	echo -e "  ${PURPLE}sel, select${CLEAR}     Show a selector to choose the Neovim configuration"
+	echo -e "  ${PURPLE}conf, config${CLEAR}    Edit Neovim Managaer config"
+	echo -e "  ${PURPLE}def, default${CLEAR}    Use default config"
+	echo -e "  ${PURPLE}sys, system${CLEAR}     Use system config"
 	echo
 	echo "Available options:"
-	echo -e "  ${PURPLE}-h, --help${CLEAR}      Display this help message"
-	echo -e "  ${PURPLE}-d, --default${CLEAR}   Use default config"
-	echo -e "  ${PURPLE}-n, --native${CLEAR}    Use native config"
+	echo -e "  ${PURPLE}-h, --help${CLEAR}      Show help"
+	echo -e "  ${PURPLE}-v, --version${CLEAR}   Show CLI version"
+	echo -e "  ${PURPLE}-d, --default${CLEAR}   Show default config path"
+	echo -e "  ${PURPLE}-c, --conf${CLEAR}      Show available configs"
 }
 
 get_nvim_instances() {
@@ -60,12 +66,11 @@ select_config() {
 	NVIM_APPNAME=$config nvim "$@"
 }
 
-use_default_environment() {
+get_default_config() {
 	items=($(get_nvim_instances))
 
 	# Set the default instance
 	local default_config
-
 	for item in "${items[@]}"; do
 		if [[ "$item" == *"*" ]]; then
 			default_config="${item%}"
@@ -74,9 +79,15 @@ use_default_environment() {
 	done
 
 	default_config=${default_config:-${items[0]}}
-
+	#
 	# Remove the * character
 	default_config="${default_config%\*}"
+
+	echo $default_config
+}
+
+use_default_environment() {
+	default_config=$(get_default_config)
 
 	NVIM_APPNAME=$default_config nvim "$@"
 
@@ -95,6 +106,21 @@ use_config_selector() {
 	exit 0
 }
 
+show_nvim_manager_version() {
+	echo -e "${GREEN}$VERSION${GREEN}"
+	exit 0
+}
+
+show_default_config_path() {
+	default_config=$(get_default_config)
+	echo -e "${GREEN}$HOME/.config/$default_config${GREEN}"
+}
+
+show_available_configs() {
+	items=$(get_nvim_instances)
+	echo -e "${GREEN}${items[@]}${GREEN}"
+}
+
 [[ $# -eq 0 ]] && use_config_selector
 
 while [[ $# -gt 0 ]]; do
@@ -106,18 +132,38 @@ while [[ $# -gt 0 ]]; do
 		shift # Remove argument
 		use_config_selector "$@"
 		;;
-	-h | --help)
+	conf | config)
+		echo "sel"
 		shift # Remove argument
-		show_help
+		use_default_environment $CONFIG_FILE_PATH
 		;;
-	-d | --default)
+	def | default)
 		shift # Remove argument
 		use_default_environment "$@"
 		echo "Default"
 		;;
-	-n | --native)
+	sys | system)
 		shift # Remove argument
 		use_native_environment "$@"
+		;;
+	-d | --default)
+		shift # Remove argument
+		show_default_config_path
+		exit 0
+		;;
+	-h | --help)
+		shift # Remove argument
+		show_help
+		;;
+	-v | --version)
+		shift # Remove argument
+		show_nvim_manager_version
+		exit 0
+		;;
+	-c | --conf)
+		shift # Remove argument
+		show_available_configs
+		exit 0
 		;;
 	*)
 		use_config_selector "$@"
