@@ -50,6 +50,11 @@ with pkgs; [
   # Gnome
   gnome.nautilus # File manager
   gnome.gnome-system-monitor # System monitor
+  gnome.adwaita-icon-theme # Gnome icon theme
+  gnome.sushi # A quick previewer for Nautilus
+  evince # Document viewer
+  gnome-text-editor # Text editor
+  gedit # Text editor
   baobab # Graphical application to analyse disk usage in any GNOME environment
 
   # Messaging
