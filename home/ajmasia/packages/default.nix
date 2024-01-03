@@ -16,7 +16,7 @@ let
 
   yarnWithNode20 = pkgs.yarn.overrideAttrs (oldAttrs: rec {
     buildInputs = with pkgs; [
-      nodejs-20_x
+      nodejs_20
     ];
   });
 
@@ -32,6 +32,7 @@ with pkgs; [
   lfs # Get infomation on yoour mounted disks
   tree # A recursive directory listing program that produces a depth indented listing of files
   unzip # A utility for unpacking zip files
+  fd # A simple, fast and user-friendly alternative to find
 
   # bullshit apps
 
