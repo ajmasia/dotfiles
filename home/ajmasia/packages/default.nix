@@ -84,8 +84,9 @@ with pkgs; [
 
   # Editors
 
-  # LSP and Lua tools
+  # LSP and related tools
   stylua # An opinionated Lua code formatter
   sumneko-lua-language-server # A full-featured Lua language server
   luajitPackages.luarocks # A package manager for Lua modules
+  tree-sitter # An incremental parsing system for programming tools
 ]
