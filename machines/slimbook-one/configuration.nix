@@ -117,6 +117,8 @@
   #   enableSSHSupport = true;
   # };
 
+  programs.dconf.enable = true;
+
   programs.hyprland = {
     enable = true;
 
