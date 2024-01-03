@@ -47,6 +47,10 @@ with pkgs; [
   # Multimedia
   helvum # A GTK patchbay for pipewire
 
+  # Gnome
+  gnome.nautilus # File manager
+  gnome.gnome-system-monitor # System monitor
+  baobab # Graphical application to analyse disk usage in any GNOME environment
 
   # Messaging
   telegram-desktop
