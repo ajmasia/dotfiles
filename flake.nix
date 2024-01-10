@@ -11,25 +11,39 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     ags.url = "github:Aylur/ags";
-  };
 
-  outputs = inputs @ {nixpkgs, ...}: let
-    system = "x86_64-linux";
-
-    customModules = {
-      imports = [ ];
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # url = "/home/gaetan/perso/nix/nixvim/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-  in {
-    nixosConfigurations = (
-      import ./outputs/nixos-config.nix {
-        inherit system inputs customModules;
-      }
-    );
-
-    homeConfigurations = (
-      import ./outputs/home-config.nix {
-        inherit system inputs;
-      }
-    );
   };
+
+  outputs = inputs @ { nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+
+      customModules = {
+        imports = [ ];
+      };
+
+      homeManagerModules = {
+        imports = [
+          inputs.nixvim.homeManagerModules.nixvim
+        ];
+      };
+    in
+    {
+      nixosConfigurations = (
+        import ./outputs/nixos-config.nix {
+          inherit system inputs customModules;
+        }
+      );
+
+      homeConfigurations = (
+        import ./outputs/home-config.nix {
+          inherit system inputs homeManagerModules;
+        }
+      );
+    };
 }

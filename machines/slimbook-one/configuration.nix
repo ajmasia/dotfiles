@@ -13,24 +13,35 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 3;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = false;
 
-  networking.hostName = "viserion"; # Define your hostname.
+  hardware.logitech.wireless.enable = true;
+  hardware.pulseaudio.enable = false;
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings.General.ControllerMode = "dual";
+  sound.enable = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  networking.hostName = "viserion"; # Define your hostname.
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
+
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "es_ES.UTF-8";
     LC_IDENTIFICATION = "es_ES.UTF-8";
@@ -59,13 +70,15 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.accounts-daemon.enable = true; # DBus service for accessing the list of user accounts and information attached to those accounts
+
   services.dbus.enable = true;
+  services.dbus.packages = [ pkgs.dconf ]; # https://search.nixos.org/options?channel=23.11&show=services.dbus.packages&from=0&size=50&sort=relevance&type=packages&query=services.dbus.package
+
+  # GNOME Keyring daemon, a service designed to take care of the user’s security credentials, such as user names and passwords
+  services.gnome.gnome-keyring.enable = true; # https://search.nixos.org/options?channel=23.11&show=services.gnome.gnome-keyring&from=0&size=50&sort=relevance&type=packages&query=services.gnome.gnome-keyring
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  hardware.bluetooth.enable = true;
-  security.rtkit.enable = true;
   services.blueman.enable = true;
   services.pipewire = {
     enable = true;
@@ -80,8 +93,45 @@
     #media-session.enable = true;
   };
 
+  services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+
+  services.pcscd.enable = true; # Smart Card Daemon
+
+  services.udev. packages = [ pkgs.yubikey-personalization ];
+
+  services.udisks2.enable = true;
+
+  services.mullvad-vpn.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  programs.dconf.enable = true;
+  programs.hyprland = {
+    enable = true;
+
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
+
+    xwayland = {
+      # An X server for interfacing X11 apps with the Wayland protocol
+      enable = true;
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+
+    wlr = {
+      enable = true;
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ajmasia = {
@@ -117,30 +167,7 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.dconf.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
-
-    xwayland = {
-      # An X server for interfacing X11 apps with the Wayland protocol
-      enable = true;
-    };
-  };
-
-  xdg.portal = {
-    enable = true;
-
-    wlr = {
-      enable = true;
-    };
-
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
 
   # List services that you want to enable:
 

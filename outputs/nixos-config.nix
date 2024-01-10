@@ -1,7 +1,7 @@
 { system, inputs, customModules, ... }:
 
 let
-  inherit (inputs.nixpkgs.lib) nixosSystem; 
+  inherit (inputs.nixpkgs.lib) nixosSystem;
 in
 {
   viserion = nixosSystem {
@@ -10,7 +10,7 @@ in
     specialArgs = {
       inherit inputs;
     };
-    
+
     modules = [
       ../machines/slimbook-one/hardware-configuration.nix
       ../machines/slimbook-one/configuration.nix
