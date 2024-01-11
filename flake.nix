@@ -12,11 +12,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     ags.url = "github:Aylur/ags";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # url = "/home/gaetan/perso/nix/nixvim/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixVim.url = "github:ajmasia/nvim-nix";
   };
 
   outputs = inputs @ { nixpkgs, ... }:
@@ -27,11 +23,6 @@
         imports = [ ];
       };
 
-      homeManagerModules = {
-        imports = [
-          inputs.nixvim.homeManagerModules.nixvim
-        ];
-      };
     in
     {
       nixosConfigurations = (
@@ -42,7 +33,7 @@
 
       homeConfigurations = (
         import ./outputs/home-config.nix {
-          inherit system inputs homeManagerModules;
+          inherit system inputs;
         }
       );
     };

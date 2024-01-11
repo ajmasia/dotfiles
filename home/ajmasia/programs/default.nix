@@ -3,7 +3,7 @@
   ./readline
   ./starship
   ./git
-  ./neovim
+  # ./neovim
   ./alacritty
   ./bat
   ./fzf

@@ -24,6 +24,7 @@ in
 with pkgs; [
   # From overlays
   ajmasia-bin # Personal shell scripts
+  cnvim
 
   # Core tools
   ripgrep # A utility that combines the usability of The Silver Searcher with the raw speed of grep
@@ -92,6 +93,7 @@ with pkgs; [
   # Security and privacy
 
   # Editors
+  neovim # Vim-fork focused on extensibility and usability
 
   # LSP and related tools
   stylua # An opinionated Lua code formatter

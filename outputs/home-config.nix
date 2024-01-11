@@ -1,4 +1,4 @@
-{ system, inputs, homeManagerModules, ... }:
+{ system, inputs, ... }:
 
 let
   pkgs = inputs.nixpkgs.legacyPackages.${system};
@@ -13,7 +13,6 @@ with inputs; {
 
     modules = [
       ../home/ajmasia/home.nix
-      homeManagerModules
     ];
   };
 }

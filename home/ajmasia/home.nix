@@ -25,6 +25,7 @@ with pkgs; {
   fonts.fontconfig.enable = true;
 
   programs.home-manager.enable = true;
+  # programs.neovim.enable = true;
 
   dconf = {
     enable = true;
@@ -44,6 +45,7 @@ with pkgs; {
 
     overlays = [
       (import ./overlays/bin.nix)
+      (import ./overlays/nvim.nix { inherit inputs; })
     ];
   };
 
