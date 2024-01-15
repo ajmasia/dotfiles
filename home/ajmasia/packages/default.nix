@@ -19,7 +19,6 @@ let
       nodejs_20
     ];
   });
-
 in
 with pkgs; [
   # From overlays
@@ -53,6 +52,7 @@ with pkgs; [
   gnome.gnome-system-monitor # System monitor
   gnome.adwaita-icon-theme # Gnome icon theme
   gnome.sushi # A quick previewer for Nautilus
+  gnome.gnome-terminal # Terminal emulator
   evince # Document viewer
   gnome-text-editor # Text editor
   gedit # Text editor

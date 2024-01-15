@@ -9,11 +9,6 @@
         WINIT_X11_SCALE_FACTOR = "0.94";
       };
 
-      class = {
-        instance = "Alacritty";
-        general = "Alacritty";
-      };
-
       font = {
         size = 13;
 
@@ -24,7 +19,6 @@
 
       colors = {
         primary = {
-          # background = "#24283b"; for use with tokyonight theme
           background = "#282c34";
           foreground = "0xa9b1d6";
         };
@@ -79,6 +73,10 @@
 
       shell = {
         program = "/run/current-system/sw/bin/bash";
+      };
+
+      scrolling = {
+        history = 6000;
       };
     };
   };

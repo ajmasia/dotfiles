@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# from https://github.com/polybar/polybar/issues/2078
+# TODO: refactor this script to nix and use it from polybar/scripts folder
+
+for i in /sys/class/hwmon/hwmon*/temp*_input; do
+	if [ "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*}))" = "k10temp: Tctl" ]; then
+		# echo $i >~/tmp/hwmon
+		# break
+		# export HWMON_PATH="$i"
+		echo $i
+		break
+	fi
+done
