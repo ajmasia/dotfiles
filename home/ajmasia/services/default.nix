@@ -2,4 +2,5 @@
   ./dunst
   ./applets
   ./gammastep
+  # ./udiskie
 ]

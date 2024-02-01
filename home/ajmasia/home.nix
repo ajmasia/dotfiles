@@ -38,6 +38,7 @@ with pkgs; {
         builtins.elem (pkgs.lib.getName pkg) [
           "1password"
           "1password-cli"
+          "google-chrome"
         ];
 
       permittedInsecurePackages = [ ];

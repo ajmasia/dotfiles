@@ -33,6 +33,7 @@ with pkgs; [
   tree # A recursive directory listing program that produces a depth indented listing of files
   unzip # A utility for unpacking zip files
   fd # A simple, fast and user-friendly alternative to find
+  udiskie # Removable disk automounter using udisks
 
   # bullshit apps
 
@@ -69,6 +70,7 @@ with pkgs; [
 
   # Browsers
   firefox-wayland # Web brouser
+  google-chrome # Web brouser
 
   # UI
   wl-clipboard # Command-line copy/paste utilities for Wayland

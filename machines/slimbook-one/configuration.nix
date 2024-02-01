@@ -138,7 +138,7 @@
   users.users.ajmasia = {
     isNormalUser = true;
     description = "Antonio José Masiá";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "audio" ];
     packages = with pkgs; [ ];
   };
 
