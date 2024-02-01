@@ -1,0 +1,52 @@
+{
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 1
+    }
+  },
+  "hyprland/window": {
+    "format": "👉 {}",
+    "separate-outputs": true
+  },
+  "clock": {
+    "format-alt": "{:%d %m %Y}"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "  {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "memory": {
+    "interval": 1,
+    "format": "  {percentage}%",
+    "tooltip-format": "Used Memory: {used:0.1f}G",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "interval": 1,
+    "format": "{icon}  {temperatureC}°C",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input"
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  }
+}

@@ -39,6 +39,7 @@ with pkgs; {
           "1password"
           "1password-cli"
           "google-chrome"
+          "slack"
         ];
 
       permittedInsecurePackages = [ ];

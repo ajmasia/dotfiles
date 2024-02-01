@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+pkill waybar
+sleep 0.5
+
+WAYBAR_DIR="$HOME/.config/waybar"
+CONFIG_FILE="config.json"
+STYLE_FILE="styles.css"
+THEME="dark"
+
+CONFIG_FILE_PATH="$WAYBAR_DIR/themes/$THEME/$CONFIG_FILE"
+STYLE_FILE_PATH="$WAYBAR_DIR/themes/$THEME/$STYLE_FILE"
+
+echo $CONFIG_FILE_PATH
+echo $STYLE_FILE_PATH
+
+waybar -c $CONFIG_FILE_PATH -s $STYLE_FILE_PATH &

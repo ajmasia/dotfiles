@@ -60,7 +60,8 @@ with pkgs; [
   baobab # Graphical application to analyse disk usage in any GNOME environment
 
   # Messaging
-  telegram-desktop
+  telegram-desktop # Telegram desktop client
+  slack # Slack desktop client
 
   # Dev tools
 

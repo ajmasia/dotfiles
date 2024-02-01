@@ -1,0 +1,86 @@
+@define-color main-background #24283B;
+@define-color text-color #FFFFFF;
+@define-color warning-color #FFB86C;
+@define-color active-color #f7768e;
+@define-color hover-color #ff9e64;
+
+* {
+  font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+}
+
+window#waybar {
+  border-radius: 8px;
+  background-color: @main-background;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+tooltip {
+  border-radius: 8px;
+  border: none;
+  background-color: @main-background;
+  padding: 12px;
+  margin: 0px;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#tray,
+#worksapces,
+#window {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: @text-color;
+}
+
+#workspaces {
+  color: @text-color;
+  font-weight: bold;
+  padding-left: 9px;
+}
+
+#workspaces button {
+  padding-left: 4px;
+  padding-right: 4px;
+  background-color: @main-background;
+  color: @text-color;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  background-color: @main-background;
+  color: @active-color;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  background: @hover-color;
+  border: none;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#cpu {
+  font-weight: bold;
+  min-width: 50px;
+}
+
+#memory {
+  font-weight: bold;
+  min-width: 50px;
+}
+
+#memory.warning {
+  color: @warning-color;
+}
+
+#temperature {
+  font-weight: bold;
+  min-width: 50px;
+}
