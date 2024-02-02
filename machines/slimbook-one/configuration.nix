@@ -3,6 +3,19 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { inputs, config, pkgs, ... }:
+let
+  dbus-hyprland-environment = pkgs.writeTextFile {
+    name = "dbus-hyprland-environment";
+    destination = "/bin/dbus-hyprland-environment";
+    executable = true;
+
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=hyprland
+      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
+in
 
 {
   imports =
@@ -22,6 +35,11 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings.General.ControllerMode = "dual";
+
+  hardware.opengl = {
+    enable = true;
+  };
+
   sound.enable = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -148,12 +166,21 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     bluetuith
+    dbus-hyprland-environment
   ];
 
   # Hint Electon apps to use wayland
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland,x11";
+    WLR_DRM_NO_ATOMIC = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_SESSION_TYPE = "wayland";
   };
+
+  environment.loginShellInit = ''
+    dbus-update-activation-environment --systemd DISPLAY
+  '';
 
   nix = {
     settings = {
