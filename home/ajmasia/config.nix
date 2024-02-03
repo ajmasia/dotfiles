@@ -17,6 +17,6 @@ in
   gitName = userDescription;
   gitEmail = devEmail;
 
-  terminal = "kitty";
+  terminal = "alacritty";
   browser = "firefix";
 }
