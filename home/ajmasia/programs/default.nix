@@ -1,4 +1,6 @@
 [
+  ./bash
+  ./starship
   ./git
   ./alacritty
 ]
