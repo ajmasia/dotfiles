@@ -26,6 +26,7 @@ in
       allowUnfreePredicate = pkg:
         builtins.elem (pkgs.lib.getName pkg) [
           "1password"
+          "google-chrome"
         ];
 
       permittedInsecurePackages = [ ];
