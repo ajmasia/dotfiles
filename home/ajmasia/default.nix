@@ -21,5 +21,17 @@ in
     stateVersion = "23.11";
   };
 
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (pkgs.lib.getName pkg) [
+          "1password"
+        ];
+
+      permittedInsecurePackages = [ ];
+    };
+
+  };
+
   imports = [ ] ++ builtins.concatMap import [ ./programs ];
 }

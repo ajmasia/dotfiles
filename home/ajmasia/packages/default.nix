@@ -12,4 +12,8 @@ with pkgs; [
 
   # Messaging
   telegram-desktop # Telegram desktop client
+
+  # Security tools
+  1
+  password-gui # 1Password password manager GUI
 ]
