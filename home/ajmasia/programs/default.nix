@@ -4,4 +4,5 @@
   ./starship
   ./git
   ./alacritty
+  ./rofi
 ]
