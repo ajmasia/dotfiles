@@ -10,9 +10,18 @@ with pkgs; [
   unzip # A utility for unpacking zip files
   fd # A simple, fast and user-friendly alternative to find
 
+  # GUI tools
+  wl-clipboard # Command-line copy/paste utilities for Wayland
+  wl-clip-persist # Keep Wayland clipboard even after programs close
+  cliphist # Wayland clipboard manager
+
   # Messaging
   telegram-desktop # Telegram desktop client
 
   # Security tools
   _1password-gui # 1Password password manager GUI
+
+  # Browser
+  firefox-wayland # Firefox browser with Wayland support
+  google-chrome # Google Chrome browser
 ]
