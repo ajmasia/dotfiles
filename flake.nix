@@ -2,10 +2,10 @@
   description = "My awesomie systems config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     homeManager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,23 +14,20 @@
 
   outputs = inputs @ { nixpkgs, ... }:
     let
-      system = "x86_64-linux";
-
       customModules = {
         imports = [ ];
       };
     in
     {
-      nixosConfigurations = (
-        import ./outputs/nixos.nix {
-          inherit system inputs customModules;
-        }
-      );
+      nixosConfigurations = {
+        # Slimbook One
+        viserion = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./host/viserion ];
+          specialArgs = { inherit system inputs; };
+        };
+      };
 
-      homeConfigurations = (
-        import ./outputs/home.nix {
-          inherit system inputs;
-        }
-      );
+      homeConfigurationes = { };
     };
 }
