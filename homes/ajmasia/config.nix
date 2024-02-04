@@ -18,5 +18,5 @@ in
   gitEmail = devEmail;
 
   terminal = "alacritty";
-  browser = "firefix";
+  browser = "firefox";
 }

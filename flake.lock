@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "homeManager": {
+    "home-manager": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -123,7 +123,7 @@
     },
     "root": {
       "inputs": {
-        "homeManager": "homeManager",
+        "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2"
       }

@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    homeManager = {
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -12,8 +12,13 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs @ { nixpkgs, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     let
+      inherit (nixpkgs.lib) nixosSystem;
+      inherit (home-manager.lib) homeManagerConfiguration;
+
+      system = "x86_64-linux";
+
       customModules = {
         imports = [ ];
       };
@@ -21,13 +26,19 @@
     {
       nixosConfigurations = {
         # Slimbook One
-        viserion = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./host/viserion ];
-          specialArgs = { inherit system inputs; };
+        viserion = nixosSystem {
+          inherit system;
+          modules = [ ./hosts/viserion ];
+          specialArgs = { inherit inputs; };
         };
       };
 
-      homeConfigurationes = { };
+      homeConfigurations = {
+        "ajmasia@viserion" = homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./homes/ajmasia ];
+        };
+      };
     };
 }
