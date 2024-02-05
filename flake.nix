@@ -47,7 +47,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users = {
-                "ajmasia@drogon" = import ./home/ajmasia/drogon;
+                "ajmasia" = import ./homes/ajmasia/drogon;
               };
             }
           ];
