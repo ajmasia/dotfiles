@@ -44,6 +44,7 @@
             # home-manager as system module
             home-manager.darwinModules.home-manager
             {
+              # TODO: move as home-manager standalone module
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users = {
