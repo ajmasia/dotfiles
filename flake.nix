@@ -45,6 +45,7 @@
             home-manager.darwinModules.home-manager
             {
               # TODO: move as home-manager standalone module
+              # https://github.com/ajmasia/darwin-config/blob/main/flake.nix
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users = {
