@@ -1,0 +1,5 @@
+[
+  ./zsh
+  ./starship
+  ./tools
+]
