@@ -37,7 +37,7 @@
         "ajmasia@viserion" = homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./homes/ajmasia ];
+          modules = [ ./homes/viserion/ajmasia ];
         };
       };
     };
