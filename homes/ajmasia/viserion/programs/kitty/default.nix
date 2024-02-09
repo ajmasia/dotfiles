@@ -5,7 +5,7 @@
     enable = true;
 
     font.name = "Hack Nerd Font";
-    font.size = 12;
+    font.size = 13;
 
     theme = "Catppuccin-Macchiato";
 
