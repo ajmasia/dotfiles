@@ -1,20 +1,16 @@
 { pkgs, ... }:
 
-let
-  userConfig = (import ./config.nix);
-
-in
 {
   home = {
-    username = userConfig.userName;
-    homeDirectory = userConfig.homeDirectory;
+    inherit (import ./config.nix) username;
+    inherit (import ./config.nix) homeDirectory;
 
     keyboard = {
       layout = "us";
       variant = "altgr-intl";
     };
 
-    packages = import ./packages { pkgs = pkgs; };
+    packages = import ./packages { inherit pkgs; };
 
     file = (import ./file) { };
 
@@ -30,10 +26,16 @@ in
           "obsidian"
         ];
 
-      permittedInsecurePackages = [ ];
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
     };
 
   };
 
-  imports = [ ] ++ builtins.concatMap import [ ./programs ./services ];
+  imports = [ ] ++ builtins.concatMap import [
+    ./ui
+    ./programs
+    ./services
+  ];
 }

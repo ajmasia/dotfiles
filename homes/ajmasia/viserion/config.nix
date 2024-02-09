@@ -1,6 +1,6 @@
 let
-  userName = "ajmasia";
-  homeDirectory = "/home/${userName}";
+  username = "ajmasia";
+  homeDirectory = "/home/${username}";
   configDirectory = "${homeDirectory}/.config";
 
   userDescription = "Antonio José Masiá";
@@ -9,10 +9,7 @@ let
   privateMail = "antoniojosemasia@icloud.com";
 in
 {
-  userName = userName;
-  userDescription = userDescription;
-  homeDirectory = homeDirectory;
-  configDirectory = configDirectory;
+  inherit username userDescription homeDirectory configDirectory;
 
   gitName = userDescription;
   gitEmail = devEmail;
