@@ -16,6 +16,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings.General.ControllerMode = "dual";
+
   networking.hostName = "viserion"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -54,7 +57,10 @@
     xkb.variant = "altgr-intl";
   };
 
+  services.blueman.enable = true;
   services.dbus.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   services.pipewire = {
     enable = true;
