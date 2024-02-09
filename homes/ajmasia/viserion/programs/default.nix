@@ -1,4 +1,5 @@
 [
+  ./tools
   ./bash
   ./readline
   ./starship
