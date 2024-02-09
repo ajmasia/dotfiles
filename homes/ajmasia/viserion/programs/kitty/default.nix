@@ -7,7 +7,7 @@
     font.name = "Hack Nerd Font";
     font.size = 13;
 
-    theme = "Cobalt2";
+    theme = "Catppuccin-Macchiato";
 
     settings = {
       window_padding_width = 6;

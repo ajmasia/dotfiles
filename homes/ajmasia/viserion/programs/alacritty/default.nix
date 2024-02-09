@@ -5,10 +5,6 @@
     enable = true;
 
     settings = {
-      env = {
-        WINIT_X11_SCALE_FACTOR = "0.94";
-      };
-
       font = {
         size = 13;
 

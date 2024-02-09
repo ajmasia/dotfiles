@@ -1,3 +1,4 @@
 [
+  ./gammastep
   ./flameshot
 ]

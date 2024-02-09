@@ -15,6 +15,9 @@ with pkgs; [
   wl-clip-persist # Keep Wayland clipboard even after programs close
   cliphist # Wayland clipboard manager
 
+  # Productivity tools
+  obsidian # A powerful knowledge base that works on top of a local folder of plain text Markdown files
+
   # Messaging
   telegram-desktop # Telegram desktop client
 

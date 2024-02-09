@@ -27,6 +27,7 @@ in
         builtins.elem (pkgs.lib.getName pkg) [
           "1password"
           "google-chrome"
+          "obsidian"
         ];
 
       permittedInsecurePackages = [ ];
