@@ -5,4 +5,5 @@
   ./git
   ./alacritty
   ./rofi
+  ./kitty
 ]
