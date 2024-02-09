@@ -1,10 +1,7 @@
 [
-  ./tools
   ./bash
   ./readline
   ./starship
   ./git
-  ./alacritty
   ./rofi
-  ./kitty
 ]
