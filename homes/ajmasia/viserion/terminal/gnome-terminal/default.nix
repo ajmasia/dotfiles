@@ -2,6 +2,6 @@
 
 {
   programs.gnome-terminal = {
-    enable = true;
+    enable = false;
   };
 }

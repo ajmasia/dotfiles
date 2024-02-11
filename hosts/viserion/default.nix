@@ -28,6 +28,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "192.168.4.102" "1.1.1.1" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -75,11 +76,14 @@
   security.rtkit.enable = true;
 
   xdg.portal.enable = true;
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
   programs = {
     hyprland.enable = true;
     hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
   };
+
+  programs.dconf.enable = true;
 
   # Configure console keymap
   console.keyMap = "us-acentos";

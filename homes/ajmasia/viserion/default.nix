@@ -30,7 +30,6 @@
         "electron-25.9.0"
       ];
     };
-
   };
 
   imports = [ ] ++ builtins.concatMap import [
