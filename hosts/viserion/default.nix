@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./networking.nix
       ./fonts.nix
     ];
 
@@ -19,7 +20,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings.General.ControllerMode = "dual";
 
-  networking.hostName = "viserion"; # Define your hostname.
+  # networking.hostName = "viserion"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -27,8 +28,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.nameservers = [ "192.168.4.102" "1.1.1.1" ];
+  # networking.networkmanager.enable = true;
+  # networking.nameservers = [ "192.168.4.102" "1.1.1.1" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
