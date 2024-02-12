@@ -38,12 +38,12 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.nix-colors.homeManagerModules.default
+    ./notifications
   ] ++ builtins.concatMap import [
     ./ui
     ./programs
     ./services
     ./terminal
     ./editors
-    ./notifications
   ];
 }
