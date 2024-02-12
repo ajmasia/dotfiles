@@ -18,6 +18,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, nix-darwin, ... }:
@@ -25,6 +27,8 @@
       inherit (nixpkgs.lib) nixosSystem;
       inherit (nix-darwin.lib) darwinSystem;
       inherit (home-manager.lib) homeManagerConfiguration;
+
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
       customModules = {
         imports = [ ];
@@ -63,8 +67,12 @@
 
       homeConfigurations = {
         "ajmasia@viserion" = homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs; };
+          inherit pkgs;
+
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+          };
           modules = [ ./homes/ajmasia/viserion ];
         };
       };

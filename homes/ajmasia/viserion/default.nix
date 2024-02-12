@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, gtkThemeFromeScheme, ... }:
 
 {
   home = {
@@ -16,6 +16,8 @@
 
     stateVersion = "23.11";
   };
+
+  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
 
   nixpkgs = {
     config = {
@@ -35,6 +37,7 @@
 
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.nix-colors.homeManagerModules.default
   ] ++ builtins.concatMap import [
     ./ui
     ./programs
