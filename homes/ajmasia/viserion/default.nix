@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home = {
@@ -32,10 +32,13 @@
     };
   };
 
-  imports = [ ] ++ builtins.concatMap import [
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ] ++ builtins.concatMap import [
     ./ui
     ./programs
     ./services
     ./terminal
+    ./editors
   ];
 }
