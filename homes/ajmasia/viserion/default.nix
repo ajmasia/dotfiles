@@ -24,6 +24,7 @@
           "1password"
           "google-chrome"
           "obsidian"
+          "vscode"
         ];
 
       permittedInsecurePackages = [
