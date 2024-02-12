@@ -44,5 +44,6 @@
     ./services
     ./terminal
     ./editors
+    ./notifications
   ];
 }
