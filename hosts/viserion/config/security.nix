@@ -26,6 +26,10 @@
     };
   };
 
+  environment.variables = {
+    POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  };
+
   services = {
     # enables the pcscd daemon, which provides access to smart cards
     # needed for YubiKey tools
