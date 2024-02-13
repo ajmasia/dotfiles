@@ -5,7 +5,7 @@
   users.users.ajmasia = {
     isNormalUser = true;
     description = "ajmasia";
-    extraGroups = [ "networkmanager" "wheel" "audio" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "input" "docker" ];
     packages = with pkgs; [ ];
   };
 }
