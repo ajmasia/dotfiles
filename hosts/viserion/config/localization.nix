@@ -4,6 +4,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
+  # Set the hardware clock to local time
+  time.hardwareClockInLocalTime = true;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
