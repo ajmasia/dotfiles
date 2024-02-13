@@ -19,6 +19,8 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
 
+  fonts.fontconfig.enable = true;
+
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg:

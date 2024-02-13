@@ -16,6 +16,11 @@ with pkgs; [
   wl-clip-persist # Keep Wayland clipboard even after programs close
   cliphist # Wayland clipboard manager
 
+  # Fonts
+  font-awesome # Iconic font and CSS toolkit
+  noto-fonts-color-emoji # Google Noto emoji font
+  material-icons # Material Design icons
+
   # Productivity tools
   obsidian # A powerful knowledge base that works on top of a local folder of plain text Markdown files
 
