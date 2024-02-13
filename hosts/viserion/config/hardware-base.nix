@@ -48,5 +48,7 @@
 
   # enables support for the OpenGL graphics API on the system for advanced 2D and 3D rendering
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
 }
 
