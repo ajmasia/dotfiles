@@ -40,4 +40,5 @@ with pkgs; [
 
   # bin
   (import ../bin/capture-screen-selection.nix { inherit pkgs; })
+  (import ../bin/rofy-launcher.nix { inherit pkgs; })
 ]
