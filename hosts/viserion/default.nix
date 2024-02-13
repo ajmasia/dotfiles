@@ -17,7 +17,7 @@
       ./config/virtualization.nix
       ./config/services.nix
       ./config/multimedia.nix
-      ./config/environment.nix
+      ./config/system-packages.nix
       ./config/users.nix
       ./config/display-manager.nix
       ./config/window-manager.nix
