@@ -8,14 +8,14 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./networking.nix
-      ./fonts.nix
+      ./modules/hardware-configuration.nix
+      ./modules/nix.nix
+      ./modules/nixpkgs.nix
+      ./modules/environment.nix
+      ./modules/networking.nix
+      ./modules/fonts.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings.General.ControllerMode = "dual";
@@ -99,25 +99,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    home-manager
-    #  wget
-  ];
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1"; # firefox
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-  };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
