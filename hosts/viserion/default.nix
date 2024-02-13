@@ -10,41 +10,22 @@
       # Include the results of the hardware scan.
       ./config/hardware-base.nix
       ./config/bootloader.nix
-      ./config/nix.nix
-      ./config/nixpkgs.nix
-      ./config/environment.nix
       ./config/networking.nix
       ./config/bluetooth.nix
+      ./config/logitech.nix
       ./config/multimedia.nix
+      ./config/environment.nix
+      ./config/users.nix
       ./config/display-manager.nix
       ./config/window-manager.nix
       ./config/xdg.nix
       ./config/localization.nix
-      ./config/users.nix
       ./config/gnome.nix
       ./config/security.nix
       ./config/fonts.nix
+      ./config/nix.nix
+      ./config/nixpkgs.nix
     ];
-
-  # networking.hostName = "viserion"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  # networking.networkmanager.enable = true;
-  # networking.nameservers = [ "192.168.4.102" "1.1.1.1" ];
-
-
-
-
-
-
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
