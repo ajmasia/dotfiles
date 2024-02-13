@@ -3,8 +3,20 @@
 {
   programs = {
     hyprland.enable = true;
-    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
+
+    # use the flake pachage
+    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  services.dbus.enable = true;
+  services = {
+    # applications messaging system
+    dbus = {
+      enable = true;
+
+      packages = with pkgs; [
+        gcr # for gnome crypto services
+        dconf # for gnome settings daemon
+      ];
+    };
+  };
 }

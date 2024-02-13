@@ -9,10 +9,13 @@
     [
       # Include the results of the hardware scan.
       ./config/hardware-base.nix
-      ./config/bootloader.nix
-      ./config/networking.nix
       ./config/bluetooth.nix
       ./config/logitech.nix
+      ./config/bootloader.nix
+      ./config/networking.nix
+      ./config/vpn.nix
+      ./config/virtualization.nix
+      ./config/avahi.nix
       ./config/multimedia.nix
       ./config/environment.nix
       ./config/users.nix

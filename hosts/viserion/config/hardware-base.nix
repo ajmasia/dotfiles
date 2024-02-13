@@ -45,5 +45,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # enables support for the OpenGL graphics API on the system for advanced 2D and 3D rendering
+  hardware.opengl.enable = true;
 }
 
