@@ -20,11 +20,11 @@
   };
 
   # easy external devices management
-  udisks2.enable = true;
+  services.udisks2.enable = true;
 
   # GNOME Virtual File System
   # allow applications on your system to interact seamlessly with devices and network resources as if they were local files
-  gvfs.enable = true;
+  services.gvfs.enable = true;
 
   # SSD trim support
   # free unused blocks on the device, helps to maintain performance and reduce wear on SSDs and NVMe drives
