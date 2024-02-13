@@ -8,17 +8,23 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./modules/hardware-configuration.nix
-      ./modules/nix.nix
-      ./modules/nixpkgs.nix
-      ./modules/environment.nix
-      ./modules/networking.nix
-      ./modules/fonts.nix
+      ./config/hardware-base.nix
+      ./config/bootloader.nix
+      ./config/nix.nix
+      ./config/nixpkgs.nix
+      ./config/environment.nix
+      ./config/networking.nix
+      ./config/bluetooth.nix
+      ./config/multimedia.nix
+      ./config/display-manager.nix
+      ./config/window-manager.nix
+      ./config/xdg.nix
+      ./config/localization.nix
+      ./config/users.nix
+      ./config/gnome.nix
+      ./config/security.nix
+      ./config/fonts.nix
     ];
-
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.settings.General.ControllerMode = "dual";
 
   # networking.hostName = "viserion"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -31,71 +37,11 @@
   # networking.networkmanager.enable = true;
   # networking.nameservers = [ "192.168.4.102" "1.1.1.1" ];
 
-  # Set your time zone.
-  time.timeZone = "Europe/Madrid";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_ES.UTF-8";
-    LC_IDENTIFICATION = "es_ES.UTF-8";
-    LC_MEASUREMENT = "es_ES.UTF-8";
-    LC_MONETARY = "es_ES.UTF-8";
-    LC_NAME = "es_ES.UTF-8";
-    LC_NUMERIC = "es_ES.UTF-8";
-    LC_PAPER = "es_ES.UTF-8";
-    LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
-  };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "altgr-intl";
-  };
 
-  services.blueman.enable = true;
-  services.dbus.enable = true;
-
-  services.gnome.gnome-keyring.enable = true;
-
-  services.pipewire = {
-    enable = true;
-
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-  };
-
-  sound.enable = true;
-  security.rtkit.enable = true;
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-
-  programs = {
-    hyprland.enable = true;
-    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland; # use the flake pachage
-  };
-
-  programs.dconf.enable = true;
-
-  # Configure console keymap
-  console.keyMap = "us-acentos";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ajmasia = {
-    isNormalUser = true;
-    description = "ajmasia";
-    extraGroups = [ "networkmanager" "wheel" "audio" "input" ];
-    packages = with pkgs; [ ];
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
