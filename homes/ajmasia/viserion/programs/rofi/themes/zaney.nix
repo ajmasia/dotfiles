@@ -13,7 +13,7 @@ in
     }
 
     configuration {
-      modi:		    "run,filebrowser,drun";
+      modi:		    "drun,run,filebrowser";
       show-icons:	    true;
       icon-theme:	    "Papirus";
       location:		    0;
@@ -28,8 +28,8 @@ in
       width: 45%;
       transparency: "real";
       orientation: vertical;
-      border: 2px ;
-      border-color: #${palette.base0F};
+      // border: 2px ;
+      // border-color: #${palette.base0F};
       border-radius: 10px;
     }
 
@@ -83,7 +83,7 @@ in
     }
 
     inputbar {
-      background-image: url("~/.config/rofi/themes/assets/rofi_banner.jpg", width);
+      background-image: url("./assets/rofi_banner.png", width);
       padding: 180 0 0;
       margin: 0 0 0 0;
     } 
