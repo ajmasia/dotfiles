@@ -83,7 +83,7 @@ in
     }
 
     inputbar {
-      background-image: url("./assets/rofi_banner.png", width);
+      background-image: url("./assets/rofi_banner.jpg", width);
       padding: 180 0 0;
       margin: 0 0 0 0;
     } 
