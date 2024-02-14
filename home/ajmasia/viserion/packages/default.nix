@@ -24,6 +24,9 @@ with pkgs; [
   # Productivity tools
   obsidian # A powerful knowledge base that works on top of a local folder of plain text Markdown files
 
+  # Multimedia
+  pavucontrol # PulseAudio Volume Control
+
   # Messaging
   telegram-desktop # Telegram desktop client
 
