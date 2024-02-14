@@ -39,7 +39,7 @@
         # Slimbook One
         viserion = nixosSystem {
           system = "x86_64-linux";
-          modules = [ ./hosts/viserion ];
+          modules = [ ./host/viserion ];
           specialArgs = { inherit inputs; };
         };
       };
@@ -49,7 +49,7 @@
         drogon = darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./hosts/drogon
+            ./host/drogon
             # home-manager as system module
             home-manager.darwinModules.home-manager
             {
@@ -73,7 +73,7 @@
             inherit inputs;
             inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
           };
-          modules = [ ./homes/ajmasia/viserion ];
+          modules = [ ./home/ajmasia/viserion ];
         };
       };
     };
