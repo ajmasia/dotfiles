@@ -1,4 +1,4 @@
 [
-  ./neovim
+  # ./neovim
   ./vscode
 ]
