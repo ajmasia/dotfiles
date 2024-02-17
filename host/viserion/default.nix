@@ -8,26 +8,26 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./config/hardware-base.nix
-      ./config/bluetooth.nix
-      ./config/logitech.nix
-      ./config/bootloader.nix
-      ./config/networking.nix
-      ./config/vpn.nix
-      ./config/virtualization.nix
-      ./config/services.nix
-      ./config/multimedia.nix
-      ./config/system-packages.nix
-      ./config/users.nix
-      ./config/display-manager.nix
-      ./config/window-manager.nix
-      ./config/xdg.nix
-      ./config/localization.nix
-      ./config/gnome.nix
-      ./config/security.nix
-      ./config/fonts.nix
-      ./config/nix.nix
-      ./config/nixpkgs.nix
+      ./modules/hardware-base.nix
+      ./modules/bluetooth.nix
+      ./modules/logitech.nix
+      ./modules/bootloader.nix
+      ./modules/networking.nix
+      ./modules/vpn.nix
+      ./modules/virtualization.nix
+      ./modules/services.nix
+      ./modules/multimedia.nix
+      ./modules/system-packages.nix
+      ./modules/users.nix
+      ./modules/display-manager.nix
+      ./modules/window-manager.nix
+      ./modules/xdg.nix
+      ./modules/locale.nix
+      ./modules/gnome.nix
+      ./modules/security.nix
+      ./modules/fonts.nix
+      ./modules/nix.nix
+      ./modules/nixpkgs.nix
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
