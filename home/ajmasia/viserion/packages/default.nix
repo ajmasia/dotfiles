@@ -22,7 +22,8 @@ with pkgs; [
   material-icons # Material Design icons
 
   # Productivity tools
-  obsidian # A powerful knowledge base that works on top of a local folder of plain text Markdown files
+  obsidian-wayland # From OVERLAY: powerful knowledge base that works on top of a local folder of plain text Markdown files
+  # obsidian # Powerful knowledge base that works on top of a local folder of plain text Markdown files
 
   # Multimedia
   pavucontrol # PulseAudio Volume Control
@@ -44,4 +45,5 @@ with pkgs; [
   # bin
   (import ../bin/capture-screen-selection.nix { inherit pkgs; })
   (import ../bin/rofy-launcher.nix { inherit pkgs; })
+
 ]
